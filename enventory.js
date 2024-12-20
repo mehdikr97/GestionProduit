@@ -48,7 +48,32 @@ class inventory {
     resultat.price = parseFloat(prompt("Entrer le nouveau prix "))
 //    products.push(resultat)
     fs.writeFileSync('produits.json', JSON.stringify(products), 'utf8');
+  }}
+  const inva = new inventory();
+while (true) {
+  console.log("1-Ajouter un produit")
+  console.log("2-afficher les produit")
+  console.log("3-Supprimer les produit")
+  console.log("4-modifier les produit")
+
+  console.log("5-Quitter le programme")
+
+  const choix = prompt("Choisissez une option : ");
+
+  switch (choix) {
+    case '1': inva.ajouter_unproduit()
+      break;
+    case '2': inva.afficher_produit()
+      break;
+    case '3': inva.suprimmerProduit()
+
+      break;
+    case '4': inva.modifierProduit()
+      break;
+    case '5': return
+    default: console.log("choix invalide")
   }
+}
 
 
 
