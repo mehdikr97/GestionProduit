@@ -18,7 +18,16 @@ class inventory {
     fs.writeFileSync('produits.json', JSON.stringify(this.produits, null, 2))
     console.log("produit enregistree")
   }
-
+  afficher_produit() {
+    const data = fs.readFileSync('produits.json', 'utf-8');
+    this.produits = JSON.parse(data);
+    console.log("Liste de produits");
+    this.produits.forEach((product, index) => {
+      console.log(` ${index + 1} - Nom: ${product.name}, 
+    Description ${product.description},
+    Quantite : ${product.quantity}, Prix ${product.price}`)
+    })
+  }
 
 
 
