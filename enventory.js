@@ -28,6 +28,13 @@ class inventory {
     Quantite : ${product.quantity}, Prix ${product.price}`)
     })
   }
+  suprimmerProduit() {
+    console.log("1. Supprimer un produit par ID");
+    let id = prompt("Entrez l'ID du produit à supprimer : ");
+    this.produits.splice(id - 1, 1);
+    console.log("produit supprime")
+    fs.writeFileSync("produits.json", JSON.stringify(this.produits));
+  }
 
 
 
