@@ -35,6 +35,20 @@ class inventory {
     console.log("produit supprime")
     fs.writeFileSync("produits.json", JSON.stringify(this.produits));
   }
+  modifierProduit() {
+    console.log("1. Modifier un produit par ID");
+    let id = parseInt(prompt("Entrez l'ID du produit à modifier : "));
+
+    let products = JSON.parse(fs.readFileSync('produits.json', 'utf8'));
+    const resultat = products[id -1];
+
+    resultat.name = prompt("Entrer le nouveau nom ")
+    resultat.description = prompt("Entrer la nouvelle description ")
+    resultat.quantity = parseInt(prompt("Entrer la nouvelle quantité "))
+    resultat.price = parseFloat(prompt("Entrer le nouveau prix "))
+//    products.push(resultat)
+    fs.writeFileSync('produits.json', JSON.stringify(products), 'utf8');
+  }
 
 
 
