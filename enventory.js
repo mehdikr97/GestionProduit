@@ -9,10 +9,29 @@ class inventory {
   } 
   ajouter_unproduit() {
     this.nextId = this.nextId++;
-    const name = prompt("Entrer le nom de produit :");
-    const description = prompt("Entrer la Description de produit :");
-    const quantity = parseInt(prompt("Entrer la quantite de produit :"));
-    const price = parseFloat(prompt("Entrer le prix de produit :"));
+    let name;
+
+    do {
+        name = prompt("Entrez le nom du produit :")
+        if (!name) {
+            console.log("Le nom du produit ne peut pas être vide. Veuillez réessayer.");
+        }
+    } while (!name);
+        const description = prompt("Entrer la Description de produit :");
+        let quantity;
+        do {
+            quantity = parseInt(prompt("Entrez la quantité de produit :"));
+            if (isNaN(quantity) || quantity <= 0) {
+                console.log("entrer une quantite valide ");
+            } 
+        } while (isNaN(quantity) || quantity <= 0);
+    let price ;
+    do {
+      price = parseFloat(prompt("Entrez le prix de produit :"));
+      if (isNaN(price) || price <= 0) {
+          console.log("entrer un prix valide ");
+      }
+  } while (isNaN(price) || price <= 0);
     const product = new Product(name, description, quantity, price);
     this.produits.push(product);
     fs.writeFileSync('produits.json', JSON.stringify(this.produits, null, 2))
@@ -84,4 +103,3 @@ while (true) {
 
 
 
-}
